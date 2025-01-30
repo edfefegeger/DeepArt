@@ -25,7 +25,7 @@ document.getElementById("submitButton").addEventListener("click", async (event) 
     submitButton.disabled = true;
 
     try {
-        const response = await fetch("http://62.72.20.247:8010/generate-video", {
+        const response = await fetch("https://62.72.20.247:8010/generate-video", {
             method: "POST",
             body: formData,
         });
@@ -41,14 +41,14 @@ document.getElementById("submitButton").addEventListener("click", async (event) 
         let taskStatus;
         do {
             await new Promise(resolve => setTimeout(resolve, 2000));
-            const statusResponse = await fetch(`http://62.72.20.247:8010/status/${task_id}`);
+            const statusResponse = await fetch(`https://62.72.20.247:8010/status/${task_id}`);
             const statusJson = await statusResponse.json();
             taskStatus = statusJson.status;
 
             status.textContent = `Task status: ${taskStatus}`;
         } while (taskStatus !== "completed");
 
-        const videoResponse = await fetch(`http://62.72.20.247:8010/get-video/${task_id}`);
+        const videoResponse = await fetch(`https://62.72.20.247:8010/get-video/${task_id}`);
         if (!videoResponse.ok) {
             throw new Error("Failed to fetch video URL");
         }
