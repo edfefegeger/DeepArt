@@ -1,1 +1,1 @@
-web: uvicorn API:app --host 35.214.184.4 --port 8080 --reload
+web: python -m uvicorn API:app --host 0.0.0.0 --port $PORT
