@@ -45,7 +45,7 @@ document.getElementById("submitButton").addEventListener("click", async (event) 
             const statusJson = await statusResponse.json();
             taskStatus = statusJson.status;
 
-            status.textContent = `Task status: ${taskStatus}`;
+            status.textContent = `Task status: ${taskStatus}`; 
         } while (taskStatus !== "completed");
 
         const videoResponse = await fetch(`https://35.214.184.4:8080/get-video/${task_id}`);
